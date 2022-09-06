@@ -22,5 +22,4 @@ Route::delete('/cities/{id}', [CityController::class, 'remove']);
 Route::get('cities/add', [CityController::class, 'create']);
 Route::post('cities/add', [CityController::class, 'store']);
 
-Route::get('cities/{id}/edit', [CityController::class, 'create']);
-Route::put('/cities/{id}', [CityController::class, 'edit']);
+
