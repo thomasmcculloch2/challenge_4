@@ -39,7 +39,9 @@
                 --
             </td>
             <td class="py-4 px-6">
+                <a href="cities/{{$city->id}}/edit">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                </a>
             </td>
             <td class="py-4 px-6">
 
@@ -67,5 +69,7 @@
         <p>{{session('success')}}</p>
     </div>
 @endif
+
+    {{$cities->links()}}
 
 </x-layout>

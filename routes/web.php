@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\ActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +21,5 @@ Route::delete('/cities/{id}', [CityController::class, 'remove']);
 Route::get('cities/add', [CityController::class, 'create']);
 Route::post('cities/add', [CityController::class, 'store']);
 
-
+Route::get('cities/{id}/edit', [CityController::class, 'edit']);
+Route::put('/cities/{id}', [CityController::class, 'update']);
