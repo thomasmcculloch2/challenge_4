@@ -37,5 +37,4 @@ Route::post('airlines/add_airline', [AirlineController::class, 'store']);
 Route::get('airlines/{id}/edit_airline', [AirlineController::class, 'edit']);
 Route::put('/airlines/{id}', [AirlineController::class, 'update']);
 
-Route::get('cities/{id}/edit', [CityController::class, 'create']);
-Route::put('/cities/{id}', [CityController::class, 'edit']);
+
