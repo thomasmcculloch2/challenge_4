@@ -10,15 +10,15 @@
 
 <nav class="p-4 bg-gray-100 md:flex md:justify-between md:items-center">
     <div>
-        <a href="/">
+        <a href="/cities">
             <img src="/images/logo-1.png" alt="logo" width="165" height="16">
         </a>
     </div>
 
     <div class="mt-8 md:mt-0">
-        <a href="/" class=" mr-6 font-bold uppercase">Cities</a>
-        <a href="/" class=" mr-6 font-bold uppercase">Airlines</a>
-        <a href="/" class=" mr-6 font-bold uppercase">Travels</a>
+        <a href="/cities" class=" mr-6 font-bold uppercase">Cities</a>
+        <a href="/cities" class=" mr-6 font-bold uppercase">Airlines</a>
+        <a href="/cities" class=" mr-6 font-bold uppercase">Travels</a>
 
     </div>
 </nav>

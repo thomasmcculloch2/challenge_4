@@ -16,7 +16,7 @@ class CityController extends Controller
     public function remove($id) {
         $city = City::find($id);
         $city->delete();
-        return redirect('/')->with('success', 'City deleted');
+        return redirect('/cities')->with('success', 'City deleted');
     }
 
     public function edit($id) {
@@ -24,13 +24,17 @@ class CityController extends Controller
         return view('edit',['city' => $city]);
     }
 
-    public function add($id) {
+    public function create() {
+        return view ('add');
+    }
+
+    public function store() {
         $attributes = request()->validate([
-            'name' => ['required','max:255'],
+            'name' => ['required','max:255','unique:cities,name'],
         ]);
 
         City::create($attributes);
 
-        return redirect('/')->with('success', 'Your city has been added');
+        return redirect('/cities')->with('success', 'Your city has been added');
     }
 }

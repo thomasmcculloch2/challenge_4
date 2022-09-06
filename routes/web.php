@@ -15,10 +15,11 @@ use App\Http\Controllers\ActionController;
 |
 */
 
-Route::get('/', [CityController::class, 'index']);
+Route::get('/cities', [CityController::class, 'index']);
 
 Route::delete('/cities/{id}', [CityController::class, 'remove']);
 
-Route::put('/cities/{id}', [CityController::class, 'edit']);
+Route::get('cities/add', [CityController::class, 'create']);
+Route::post('cities/add', [CityController::class, 'store']);
 
-Route::post('add/{id}', [CityController::class, 'add']);
+
