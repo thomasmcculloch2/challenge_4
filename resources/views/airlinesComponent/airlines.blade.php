@@ -25,7 +25,7 @@
             </thead>
             @foreach($airlines as $airline)
                 <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr id="{{$airline->id}}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                         {{$airline->id}}
                     </td>
@@ -45,12 +45,11 @@
                     </td>
                     <td class="py-4 px-6">
 
-                        <form action="/airlines/{{$airline->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" id="dltBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                        <form class="deleteForm" air_id="{{$airline->id}}" action="/airlines/{{$airline->id}}">
+                            <button  type="submit"  id="dltBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                         </form>
                     </td>
+                </tr>
                 </tbody>
             @endforeach
         </table>
@@ -72,5 +71,28 @@
 
     {{$airlines->links()}}
 
+    <script>
+
+        $( ".deleteForm" ).submit(function(event) {
+            event.preventDefault();
+            var url = event.target.getAttribute("action");
+            var id = event.target.getAttribute("air_id");
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: function() {
+                    $ (`#${id}`).remove();
+                }
+            });
+
+        });
+    </script>
 
 </x-layout>

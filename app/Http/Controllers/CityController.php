@@ -16,7 +16,6 @@ class CityController extends Controller
     public function remove($id) {
         $city = City::find($id);
         $city->delete();
-        return redirect('/cities')->with('success', 'City deleted');
     }
 
     public function edit($id) {

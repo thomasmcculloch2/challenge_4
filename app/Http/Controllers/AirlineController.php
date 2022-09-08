@@ -9,14 +9,13 @@ class AirlineController extends Controller
 {
     public function index() {
         return view ('airlinesComponent.airlines', [
-            'airlines' => Airline::latest()->paginate(13),
+            'airlines' => Airline::paginate(13),
         ]);
     }
 
     public function remove($id) {
         $airlines = Airline::find($id);
         $airlines->delete();
-        return redirect('airlines')->with('success', 'Airlines deleted');
     }
 
     public function edit($id) {
