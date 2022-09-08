@@ -16,21 +16,11 @@ class CityController extends Controller
     public function remove($id) {
         $city = City::find($id);
         $city->delete();
-        return redirect('/cities')->with('success', 'City deleted');
     }
 
     public function edit($id) {
         $city = City::find($id);
         return view('edit_city',['city' => $city]);
-    }
-
-    public function update($id) {
-        $city = City::find($id);
-        $attributes = request()->validate([
-            'name' => ['required','min:1','max:255','unique:cities,name'],
-        ]);
-        $city->update($attributes);
-        return redirect('/cities')->with('success', 'Your city has been edited');
     }
 
     public function update($id) {

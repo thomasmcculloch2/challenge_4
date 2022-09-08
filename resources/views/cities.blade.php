@@ -25,7 +25,7 @@
         </thead>
         @foreach($cities as $city)
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr id = "{{$city->id}}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                 {{$city->id}}
             </td>
@@ -45,9 +45,8 @@
             </td>
             <td class="py-4 px-6">
 
-                <form action="/cities/{{$city->id}}" method="POST">
+                <form action="/cities/{{$city->id}}" city_id="{{$city->id}}" id="deleteForm">
                     @csrf
-                    @method('DELETE')
                     <button type="submit" id="dltBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                 </form>
             </td>
@@ -55,7 +54,7 @@
         @endforeach
     </table>
     <a href="cities/add_city">
-        <button class="mt-6 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+        <button  class="mt-6 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             Add City
         </button>
     </a>
@@ -72,5 +71,30 @@
 
     {{$cities->links()}}
 
+    <script>
+        document.querySelectorAll('FORM').forEach(function(event){
+            event.addEventListener('submit',function(event){
+                event.preventDefault();
+                var url = event.target.getAttribute("action");
+                var id = event.target.getAttribute("city_id");
+
+                fetch(url ,{
+                    method: "DELETE",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                    .then(() => {
+                        document.getElementById(id).remove();
+                    })
+            })
+        })
+
+
+
+
+
+
+    </script>
 
 </x-layout>
