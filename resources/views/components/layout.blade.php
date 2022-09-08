@@ -5,6 +5,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <body style="font-family: Open Sans, sans-serif">
 
@@ -17,7 +19,7 @@
 
     <div class="mt-8 md:mt-0">
         <a href="/cities" class=" mr-6 font-bold uppercase">Cities</a>
-        <a href="/cities" class=" mr-6 font-bold uppercase">Airlines</a>
+        <a href="/airlines" class=" mr-6 font-bold uppercase">Airlines</a>
         <a href="/cities" class=" mr-6 font-bold uppercase">Travels</a>
 
     </div>

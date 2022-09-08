@@ -9,7 +9,7 @@ class CityController extends Controller
 {
     public function index() {
         return view ('cities', [
-            'cities' => City::all(),
+            'cities' => City::paginate(13),
         ]);
     }
 
@@ -21,11 +21,20 @@ class CityController extends Controller
 
     public function edit($id) {
         $city = City::find($id);
-        return view('edit',['city' => $city]);
+        return view('edit_city',['city' => $city]);
+    }
+
+    public function update($id) {
+        $city = City::find($id);
+        $attributes = request()->validate([
+            'name' => ['required','min:1','max:255','unique:cities,name'],
+        ]);
+        $city->update($attributes);
+        return redirect('/cities')->with('success', 'Your city has been edited');
     }
 
     public function create() {
-        return view ('add');
+        return view ('add_city');
     }
 
     public function store() {

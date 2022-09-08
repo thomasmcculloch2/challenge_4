@@ -39,20 +39,22 @@
                 --
             </td>
             <td class="py-4 px-6">
+                <a href="cities/{{$city->id}}/edit_city">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                </a>
             </td>
             <td class="py-4 px-6">
 
                 <form action="/cities/{{$city->id}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                    <button type="submit" id="dltBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                 </form>
             </td>
         </tbody>
         @endforeach
     </table>
-    <a href="cities/add">
+    <a href="cities/add_city">
         <button class="mt-6 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             Add City
         </button>
@@ -67,5 +69,8 @@
         <p>{{session('success')}}</p>
     </div>
 @endif
+
+    {{$cities->links()}}
+
 
 </x-layout>
