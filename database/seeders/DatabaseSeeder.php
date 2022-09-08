@@ -18,6 +18,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $airline_city= CityAirline::factory(20)->create();
-
     }
 }

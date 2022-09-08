@@ -2,12 +2,16 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
+use App\Models\Airline;
+
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CityAirline>
  */
-class AirlineCityFactory extends Factory
+class CityAirlineFactory extends Factory
 {
     /**
      * Define the model's default state.
