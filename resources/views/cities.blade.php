@@ -72,24 +72,25 @@
     {{$cities->links()}}
 
     <script>
-        const form = document.getElementById('deleteForm');
+        document.querySelectorAll('FORM').forEach(function(event){
+            event.addEventListener('submit',function(event){
+                event.preventDefault();
+                var url = event.target.getAttribute("action");
+                var id = event.target.getAttribute("city_id");
 
-        form.addEventListener('submit',function(event){
-            event.preventDefault();
-            var url = event.target.getAttribute("action");
-            var id = event.target.getAttribute("city_id");
-
-            fetch(url ,{
-                method: "DELETE",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-                .then(() => {
-                    var row = document.getElementById(id);
-                    row.parentNode.removeChild(row);
+                fetch(url ,{
+                    method: "DELETE",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
                 })
+                    .then(() => {
+                        document.getElementById(id).remove();
+                    })
+            })
         })
+
+
 
 
 
