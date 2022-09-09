@@ -20,17 +20,27 @@ class AirlineController extends Controller
     }
 
     public function edit($id) {
-        $airlines = Airline::find($id);
-        return view('airlinesComponent.edit_airline',['airline' => $airlines]);
+        $airline = Airline::find($id);
+
+        return view('airlinesComponent.edit_airline', [
+            'airline' => $airline,
+            'cities' => City::all(),
+        ]);
     }
 
     public function update($id) {
-        $airlines = Airline::find($id);
+        $airline = Airline::find($id);
         $attributes = request()->validate([
             'name' => ['required','min:1','max:255','unique:cities,name'],
             'description' => ['required','min:10'],
+            'cities' => ['required', 'array', 'min:1'],
         ]);
-        $airlines->update($attributes);
+        $airline->update($attributes);
+        $airline->cities()->detach();
+
+        foreach ($attributes['cities'] as $city) {
+            $airline->cities()->attach($city);
+        }
         return redirect('airlines')->with('success', 'Your airlines has been edited');
     }
 
@@ -42,17 +52,16 @@ class AirlineController extends Controller
 
     public function store() {
 
-
         $attributes = request()->validate([
             'name' => ['required','max:255','unique:cities,name'],
             'description' => ['required','min:10'],
             'cities' => ['required', 'array', 'min:1']
         ]);
 
-        /** @var Airline $airline */
         $airline = Airline::create($attributes);
 
         foreach ($attributes['cities'] as $city) {
+            //$airline->cities()->detach($city);
             $airline->cities()->attach($city);
         }
 
