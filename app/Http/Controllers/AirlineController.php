@@ -61,7 +61,6 @@ class AirlineController extends Controller
         $airline = Airline::create($attributes);
 
         foreach ($attributes['cities'] as $city) {
-            //$airline->cities()->detach($city);
             $airline->cities()->attach($city);
         }
 
