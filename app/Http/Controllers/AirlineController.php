@@ -36,6 +36,7 @@ class AirlineController extends Controller
             'cities' => ['required', 'array', 'min:1'],
         ]);
         $airline->update($attributes);
+
         $airline->cities()->detach();
 
         foreach ($attributes['cities'] as $city) {

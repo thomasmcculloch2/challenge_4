@@ -41,15 +41,15 @@
                         @foreach ($cities as $city)
                             <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
                                 <li>
-
                                     <div class="flex items-center">
                                         <input {{in_array($city->id, $airline->cities->map->id->toArray()) ? 'checked' :'' }}
                                                id="checkbox-item-3"
                                                type="checkbox"
                                                name="cities[]"
-                                               value="{{$city->id}}"
                                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="checkbox-item-3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$city->name}}</label>
+                                        <label for="checkbox-item-3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                            {{$city->name}}
+                                        </label>
                                     </div>
 
                                 </li>
