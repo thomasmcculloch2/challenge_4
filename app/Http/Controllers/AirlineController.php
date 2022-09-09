@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Airline;
 
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class AirlineController extends Controller
@@ -34,16 +35,26 @@ class AirlineController extends Controller
     }
 
     public function create() {
-        return view ('airlinesComponent.add_airline');
+        return view ('airlinesComponent.add_airline', [
+            'cities' => City::all(),
+        ]);
     }
 
     public function store() {
+
+
         $attributes = request()->validate([
             'name' => ['required','max:255','unique:cities,name'],
             'description' => ['required','min:10'],
+            'cities' => ['required', 'array', 'min:1']
         ]);
 
-        Airline::create($attributes);
+        /** @var Airline $airline */
+        $airline = Airline::create($attributes);
+
+        foreach ($attributes['cities'] as $city) {
+            $airline->cities()->attach($city);
+        }
 
         return redirect('airlines')->with('success', 'Your airline has been added');
     }
