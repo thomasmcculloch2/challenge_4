@@ -15,10 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('city_airlines', function (Blueprint $table) {
+        Schema::create('airline_city', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(City::class);
-            $table->foreignIdFor(Airline::class);
+            $table->foreignIdFor(Airline::class)->constrained('airlines')->onDelete('cascade');
+            $table->foreignIdFor(City::class)->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_airlines');
+        Schema::dropIfExists('airline_city');
     }
 };
