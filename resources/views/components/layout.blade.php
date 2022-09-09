@@ -21,7 +21,7 @@
     <div class="mt-8 md:mt-0">
         <a href="/cities" class=" mr-6 font-bold uppercase">Cities</a>
         <a href="/airlines" class=" mr-6 font-bold uppercase">Airlines</a>
-        <a href="/cities" class=" mr-6 font-bold uppercase">Travels</a>
+        <a href="/flights" class=" mr-6 font-bold uppercase">Travels</a>
 
     </div>
 </nav>

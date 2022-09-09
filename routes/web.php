@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AirlineController;
+use \App\Http\Controllers\FlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,16 @@ Route::post('airlines/add_airline', [AirlineController::class, 'store']);
 
 Route::get('airlines/{id}/edit_airline', [AirlineController::class, 'edit']);
 Route::put('/airlines/{id}', [AirlineController::class, 'update']);
+
+//-----------------------FLIGHTS--------------------------------//
+Route::get('/flights', [FlightController::class, 'index']);
+
+Route::delete('/flights/{id}', [FlightController::class, 'remove']);
+
+Route::get('flights/add_flight', [AirlineController::class, 'create']);
+Route::post('flights/add_flight', [AirlineController::class, 'store']);
+
+Route::get('flights/{id}/edit_flight', [AirlineController::class, 'edit']);
+Route::put('/flights/{id}', [AirlineController::class, 'update']);
 
 
