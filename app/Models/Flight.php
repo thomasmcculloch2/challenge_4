@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
+
+    use HasFactory;
+
+    protected $with = ['airline', 'origin', 'destination'];
+
+    protected $fillable = ['origin_city', 'destination_city', 'airline_id', 'takeoff_time', 'arrival_time'];
+
     public function airline() {
         return $this->belongsTo(Airline::class);
     }

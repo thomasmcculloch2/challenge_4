@@ -19,6 +19,7 @@ class AirlineController extends Controller
         $airlines->delete();
     }
 
+
     public function edit($id) {
         $airline = Airline::find($id);
 
