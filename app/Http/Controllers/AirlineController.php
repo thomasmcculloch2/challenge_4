@@ -19,6 +19,12 @@ class AirlineController extends Controller
         $airlines->delete();
     }
 
+//    public function cities($id) {
+//        $flight = Flight::find($id);
+//        $airline = $flight->airline();
+//        return $airline->cities();
+//    }
+
     public function edit($id) {
         $airline = Airline::find($id);
 

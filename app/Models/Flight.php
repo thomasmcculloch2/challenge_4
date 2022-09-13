@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
+
+    protected $with = ['airline', 'origin', 'destination'];
+
     public function airline() {
         return $this->belongsTo(Airline::class);
     }

@@ -20,4 +20,28 @@ class FlightController extends Controller
         $flights->delete();
     }
 
+//    public function create() {
+//        return view ('flightsComponent.add_flight', [
+//            'airlines' => Airline::all(),
+//            'cities' => City::all(),
+//        ]);
+//    }
+
+//    public function store() {
+//
+//        $attributes = request()->validate([
+//            'name' => ['required','max:255','unique:cities,name'],
+//            'description' => ['required','min:10'],
+//            'cities' => ['required', 'array', 'min:1']
+//        ]);
+//
+//        $airline = Airline::create($attributes);
+//
+//        foreach ($attributes['cities'] as $city) {
+//            $airline->cities()->attach($city);
+//        }
+//
+//        return redirect('airlines')->with('success', 'Your airline has been added');
+//    }
+
 }

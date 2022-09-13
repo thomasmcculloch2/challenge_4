@@ -43,7 +43,9 @@ Route::get('/flights', [FlightController::class, 'index']);
 
 Route::delete('/flights/{id}', [FlightController::class, 'remove']);
 
-Route::get('flights/add_flight', [AirlineController::class, 'create']);
+Route::get('/flights/{id}' , [FlightController::class, 'cities']);
+
+Route::get('flights/add_flight', [FlightController::class, 'create']);
 Route::post('flights/add_flight', [AirlineController::class, 'store']);
 
 Route::get('flights/{id}/edit_flight', [AirlineController::class, 'edit']);
