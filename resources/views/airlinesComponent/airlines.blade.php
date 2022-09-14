@@ -36,7 +36,7 @@
                         {{$airline->description}}
                     </td>
                     <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                        --
+                        {{$airline->total_flights()}}
                     </td>
                     <td class="py-4 px-6">
                         <a href="airlines/{{$airline->id}}/edit_airline">

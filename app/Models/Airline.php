@@ -14,4 +14,8 @@ class Airline extends Model
     public function cities() {
         return $this->belongsToMany(City::class,'airline_city','airline_id','city_id');
     }
+
+    public function total_flights() {
+        return $this->hasMany(Flight::class,'airline_id')->count();
+    }
 }
