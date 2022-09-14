@@ -43,14 +43,11 @@ Route::get('/flights', [FlightController::class, 'index']);
 
 Route::delete('/flights/{id}', [FlightController::class, 'remove']);
 
-Route::post('/flights/add_origin/{id}' , [FlightController::class, 'cities_origin']);
-Route::post('/flights/add_destination/{id}' , [FlightController::class, 'cities_destination']);
-
+Route::post('/flights/origin/{id}' , [FlightController::class, 'cities_origin']);
+Route::post('/flights/destination/{airline_id}/{city_id}' , [FlightController::class, 'cities_destination']);
 
 Route::get('flights/add_flight', [FlightController::class, 'create']);
 Route::post('flights/add_flight', [FlightController::class, 'store']);
 
-Route::get('flights/{id}/edit_flight', [AirlineController::class, 'edit']);
-Route::put('/flights/{id}', [AirlineController::class, 'update']);
 
 
