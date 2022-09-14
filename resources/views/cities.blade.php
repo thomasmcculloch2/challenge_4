@@ -33,10 +33,10 @@
                 {{$city->name}}
             </td>
             <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                --
+                {{$city->outgoing_flights()}}
             </td>
             <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                --
+                {{$city->incoming_flights()}}
             </td>
             <td class="py-4 px-6">
                 <a href="cities/{{$city->id}}/edit_city">
