@@ -43,15 +43,16 @@ class FlightController extends Controller
         }
     }
 
-    public function cities_destination($id) {
-        $airline = Airline::find($id);
+    public function cities_destination($airline_id, $city_id) {
+        $airline = Airline::find($airline_id);
         $cities = $airline->cities;
 
         if($cities->count() > 0) {
             echo '<option value=""> Select destination city </option>';
             foreach ($cities as $city) {
-
-                echo '<option value="'.$city->id.'">'.$city->name.'</option>';
+                if ($city->id != $city_id) {
+                    echo '<option value="'.$city->id.'">'.$city->name.'</option>';
+                }
             }
         } else {
             echo '<option value=""> No cities </option>';
@@ -67,8 +68,6 @@ class FlightController extends Controller
             'start' => ['required'],
             'end' => ['required']
         ]);
-
-
 
         $flight = [
             'airline_id' => $attributes['airline'],
